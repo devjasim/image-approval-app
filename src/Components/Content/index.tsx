@@ -22,7 +22,12 @@ const Content = () => {
 
   const { rejectedList } = useSelector((state: AllState) => state.list);
 
-  // Set image into redux either it's approved or rejected
+  /**
+   * @name handleLoadedImage
+   * @description use for after load image for cancel and approval thourgh button click
+   * @props type and data
+   * @returns dispatch action either approved or reject
+   */
   const handleLoadedImage = (type: string, data: ImageProp) => {
     if (type === "approved") {
       dispatch(setApprovedImage(data));
@@ -33,6 +38,11 @@ const Content = () => {
     }
   };
 
+  /**
+   * @name fetchImage
+   * @description is used for call the unsplash random iamge api
+   * @returns return iamge url and id and set to state
+   */
   const fetchImage = () => {
     fetch("https://api.unsplash.com/photos/random?client_id=" + APP_ID)
       .then((res) => res.json())
@@ -44,8 +54,13 @@ const Content = () => {
       });
   };
 
-  // Check is the loaded image is duplicate
-  useEffect(() => {
+  /**
+   * @name findDuplocation
+   * @description is used for find duplicate or rejected image from rejected list
+   * @props Loaded Image and rejected list iamge
+   * @returns if find image rejected image it will call again api, else add to thumbnail image
+   */
+  const findDuplocation = (loadImage: ImageProp, rejectedList: ImageProp[]) => {
     const findDuplicate =
       rejectedList.length &&
       loadImage &&
@@ -56,6 +71,11 @@ const Content = () => {
     } else {
       fetchImage();
     }
+  };
+
+  //   Call find Duplicate iamge
+  useEffect(() => {
+    loadImage && findDuplocation(loadImage, rejectedList);
   }, [loadImage, rejectedList]);
 
   return (
@@ -64,9 +84,9 @@ const Content = () => {
 
       <ApprovedList fetchImage={fetchImage} />
 
+      {/* Preview thumbnail image component  */}
       <Preview fetchImage={fetchImage} thumbnailImage={thumbnailImage} />
 
-      {/* Footer Coomponent */}
       <Footer
         thumbnailImage={thumbnailImage}
         handleLoadedImage={handleLoadedImage}
