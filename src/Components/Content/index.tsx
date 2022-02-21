@@ -1,74 +1,85 @@
-import React, { useState } from "react";
-import { ImageProp } from "../../models/";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setApprovedImage,
+  setRejectedImage,
+} from "../../appRedux/actions/imageSliceAction";
+import {
+  Thumb,
+  ContentWrapper,
+  Heading,
+  PreviewImage,
+  Title,
+} from "../StyledComponents";
+import ApprovedList from "./ApprovedList";
+import { ImageProp } from "../../models";
 import { AllState } from "../models";
-import { NavigateIcon, Thumb, ImageList, Title } from "../StyledComponents";
-import { useSelector } from "react-redux";
 
-const ApprovedImage = (props: any) => {
-  const { approvedList } = useSelector((state: AllState) => state.list);
+const Paper = () => {
+  const APP_ID = "M2i3RlZAG_vmYZUa01zHbCPhEg7vEhzmLa_cppmwjhA";
 
-  const { fetchImage } = props;
+  const dispatch = useDispatch();
 
-  const [showLeftArrow, setShowLeftArrow] = useState<boolean>(false);
-  const [showRightArrow, setShowRightArrow] = useState<boolean>(true);
+  const [loadImage, setLoadImage] = useState<ImageProp>();
+  const [thumbnailImage, setThumbnailImage] = useState<ImageProp>();
 
-  const handleScrollImage = (direction: string) => {
-    const container = document.querySelector(".wrapper");
-    let scrollCompleted = 0;
+  const { rejectedList } = useSelector((state: AllState) => state.list);
 
-    if (container) {
-      const scrollWidth = container.scrollWidth;
-
-      direction === "right" && setShowLeftArrow(true);
-      container.scrollLeft <= 0 && setShowLeftArrow(false);
-      scrollWidth <= container.scrollLeft + 253
-        ? setShowRightArrow(false)
-        : setShowRightArrow(true);
-
-      let slideVar = setInterval(function () {
-        if (direction === "left") {
-          container.scrollLeft -= 10;
-        } else {
-          container.scrollLeft += 10;
-        }
-        scrollCompleted += 10;
-        if (scrollCompleted >= 100) {
-          window.clearInterval(slideVar);
-        }
-      }, 50);
+  // Set image into redux either it's approved or rejected
+  const handleLoadedImage = (type: string, data: ImageProp) => {
+    if (type === "approved") {
+      dispatch(setApprovedImage(data));
+      setThumbnailImage(undefined);
+    } else {
+      dispatch(setRejectedImage(data));
+      setThumbnailImage(undefined);
     }
   };
 
+  const fetchImage = () => {
+    fetch("https://api.unsplash.com/photos/random?client_id=" + APP_ID)
+      .then((res) => res.json())
+      .then((data) => {
+        setLoadImage({ url: data.urls.thumb, id: data.id });
+      })
+      .catch((err) => {
+        console.log("Error happened during fetching!", err);
+      });
+  };
+
+  // Check is the loaded image is duplicate
+  useEffect(() => {
+    const findDuplicate =
+      rejectedList.length &&
+      loadImage &&
+      rejectedList.find((item: ImageProp) => item.id === loadImage.id);
+
+    if (!findDuplicate) {
+      setThumbnailImage(loadImage);
+    } else {
+      fetchImage();
+    }
+  }, [loadImage, rejectedList]);
+
   return (
-    <>
-      <Title>Approved Images ({approvedList.length})</Title>
-      <ImageList>
-        {showLeftArrow && (
-          <NavigateIcon left onClick={() => handleScrollImage("left")}>
-            A
-          </NavigateIcon>
-        )}
-        <div className="wrapper">
-          {approvedList.length === 0 ? (
-            <Thumb width="70" height="40" className="add">
-              A
-            </Thumb>
+    <ContentWrapper>
+      <Heading>
+        <Title>Image Approval Application</Title>
+      </Heading>
+
+      <ApprovedList fetchImage={fetchImage} />
+
+      <PreviewImage>
+        <Thumb height="300" className={`${!thumbnailImage && "add large"}`}>
+          {thumbnailImage ? (
+            <img src={thumbnailImage.url} alt="Loaded" />
           ) : (
-            approvedList.map((item: ImageProp) => (
-              <Thumb width="70" height="40" key={item.id}>
-                <img src={item.url} alt="Approved" />
-              </Thumb>
-            ))
+            <span>a</span>
           )}
-        </div>
-        {approvedList.length >= 4 && showRightArrow && (
-          <NavigateIcon onClick={() => handleScrollImage("right")}>
-            A
-          </NavigateIcon>
-        )}
-      </ImageList>
-    </>
+        </Thumb>
+      </PreviewImage>
+    </ContentWrapper>
   );
 };
 
-export default ApprovedImage;
+export default Paper;

@@ -1,11 +1,11 @@
-import { ContentWrapper } from "./Components/StyledComponents";
+import { Container } from "./Components/StyledComponents";
 import Paper from "./Components/Content";
 
 function App() {
   return (
-    <ContentWrapper>
+    <Container>
       <Paper />
-    </ContentWrapper>
+    </Container>
   );
 }
 
