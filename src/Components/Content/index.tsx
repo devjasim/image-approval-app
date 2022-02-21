@@ -17,9 +17,11 @@ const Content = () => {
 
   const dispatch = useDispatch();
 
+  // Initially set loaded image in state
   const [loadImage, setLoadImage] = useState<ImageProp>();
   const [thumbnailImage, setThumbnailImage] = useState<ImageProp>();
 
+  //   Rejected iamge list from redux store
   const { rejectedList } = useSelector((state: AllState) => state.list);
 
   /**
