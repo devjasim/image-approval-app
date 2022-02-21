@@ -3,6 +3,8 @@ import { ImageProp } from "../../models/";
 import { AllState } from "../models";
 import { NavigateIcon, ThumbNail, ImageList, Title } from "../StyledComponents";
 import { useSelector } from "react-redux";
+import { TiPlus } from "react-icons/ti";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 const ApprovedImage = (props: any) => {
   // Approved Images from redux store
@@ -49,13 +51,13 @@ const ApprovedImage = (props: any) => {
       <ImageList>
         {showLeftArrow && (
           <NavigateIcon left onClick={() => handleScrollImage("left")}>
-            A
+            <FaChevronLeft />
           </NavigateIcon>
         )}
         <div className="wrapper">
           {approvedList.length === 0 ? (
             <ThumbNail width="70" height="40" className="placeholder">
-              A
+              <TiPlus onClick={fetchImage} />
             </ThumbNail>
           ) : (
             approvedList.map((item: ImageProp) => (
@@ -67,7 +69,7 @@ const ApprovedImage = (props: any) => {
         </div>
         {approvedList.length >= 4 && showRightArrow && (
           <NavigateIcon onClick={() => handleScrollImage("right")}>
-            A
+            <FaChevronRight />
           </NavigateIcon>
         )}
       </ImageList>
