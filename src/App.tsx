@@ -1,5 +1,8 @@
+import React from "react";
 import { Container } from "./Components/StyledComponents";
-import Content from "./Components/Content";
+
+// components on demand
+const Content = React.lazy(() => import("./Components/Content"));
 
 function App() {
   return (
