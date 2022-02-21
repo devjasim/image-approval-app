@@ -1,10 +1,11 @@
-import React from "react";
+import { ContentWrapper } from "./Components/StyledComponents";
+import Paper from "./Components/Content";
 
 function App() {
   return (
-    <div className="App">
-      <h2>IMAGE APPROVAL</h2>
-    </div>
+    <ContentWrapper>
+      <Paper />
+    </ContentWrapper>
   );
 }
 
