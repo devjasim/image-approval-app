@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  fetchImageSlice,
   setApprovedImage,
   setRejectedImage,
 } from "../../appRedux/actions/imageSliceAction";
@@ -18,11 +19,17 @@ const Content = () => {
   const dispatch = useDispatch();
 
   // Initially set loaded image in state
-  const [loadImage, setLoadImage] = useState<ImageProp>();
+  const [loadImage, setLoadImage] = useState<any>();
   const [thumbnailImage, setThumbnailImage] = useState<ImageProp>();
 
   //   Rejected iamge list from redux store
   const { rejectedList } = useSelector((state: AllState) => state.list);
+
+  const { thumbnail } = useSelector((state: AllState) => state.thumb);
+
+  useEffect(() => {
+    thumbnail && setLoadImage(thumbnail);
+  }, [thumbnail]);
 
   /**
    * @name handleLoadedImage
@@ -46,14 +53,7 @@ const Content = () => {
    * @returns return iamge url and id and set to state
    */
   const fetchImage = () => {
-    fetch("https://api.unsplash.com/photos/random?client_id=" + APP_ID)
-      .then((res) => res.json())
-      .then((data) => {
-        setLoadImage({ url: data.urls.thumb, id: data.id });
-      })
-      .catch((err) => {
-        console.log("Error happened during fetching!", err);
-      });
+    dispatch(fetchImageSlice());
   };
 
   /**

@@ -14,4 +14,5 @@ export interface ImageProp {
 export interface ImageState {
   approvedList: [];
   rejectedList: [];
+  thumbnail: {};
 }
