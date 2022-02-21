@@ -1,8 +1,9 @@
 import React from "react";
 import { ImageProp } from "../../models";
-import { Button, Buttons, ShortDes } from "../StyledComponents";
+import { Button, ButtonContainer, ShortDes } from "../StyledComponents";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
+// Props Types For Footer Component
 interface Props {
   thumbnailImage?: ImageProp;
   handleLoadedImage: (type: string, thumbnailImage: ImageProp) => void;
@@ -12,7 +13,7 @@ const Footer = (props: Props) => {
   const { thumbnailImage, handleLoadedImage } = props;
 
   return (
-    <Buttons>
+    <ButtonContainer>
       {thumbnailImage ? (
         <>
           <Button
@@ -37,7 +38,7 @@ const Footer = (props: Props) => {
           Click on the <span>+</span> in order to get image recommendations
         </ShortDes>
       )}
-    </Buttons>
+    </ButtonContainer>
   );
 };
 

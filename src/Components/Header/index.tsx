@@ -1,6 +1,7 @@
 import React from "react";
 import { Heading, Title } from "../StyledComponents";
 
+// Props Tpyes For Header Component
 interface Prop {
   title: string;
 }

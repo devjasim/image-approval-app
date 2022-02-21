@@ -132,7 +132,7 @@ export const PreviewImage = styled.div`
   border-bottom: 1px solid ${color.secondary};
 `;
 
-export const Buttons = styled.div`
+export const ButtonContainer = styled.div`
   display: flex;
   gap: 1.5rem;
   align-items: center;
