@@ -17,7 +17,12 @@ const ApprovedImage = (props: any) => {
   const [showLeftArrow, setShowLeftArrow] = useState<boolean>(false);
   const [showRightArrow, setShowRightArrow] = useState<boolean>(true);
 
-  //   Handle Scroll function for navigation
+  /**
+   * @name handleScrollImage
+   * @description Image navigation handler when exceed the container window
+   * @param direction
+   * @returns none
+   */
   const handleScrollImage = (direction: string) => {
     const container = document.querySelector(".wrapper");
     let scrollCompleted = 0;

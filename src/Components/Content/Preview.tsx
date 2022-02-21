@@ -3,6 +3,7 @@ import { ImageProp } from "../../models";
 import { PreviewImage, ThumbNail } from "../StyledComponents";
 import { TiPlus } from "react-icons/ti";
 
+// Props types form Preview Component
 interface Prop {
   thumbnailImage?: ImageProp;
   fetchImage: () => void;

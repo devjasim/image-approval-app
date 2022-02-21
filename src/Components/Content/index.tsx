@@ -75,7 +75,7 @@ const Content = () => {
     }
   };
 
-  //   Call find Duplicate iamge
+  //Call find Duplicate iamge
   useEffect(() => {
     loadImage && findDuplocation(loadImage, rejectedList);
   }, [loadImage, rejectedList]);
