@@ -1,10 +1,10 @@
 import { Container } from "./Components/StyledComponents";
-import Paper from "./Components/Content";
+import Content from "./Components/Content";
 
 function App() {
   return (
     <Container>
-      <Paper />
+      <Content />
     </Container>
   );
 }

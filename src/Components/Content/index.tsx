@@ -14,8 +14,10 @@ import {
 import ApprovedList from "./ApprovedList";
 import { ImageProp } from "../../models";
 import { AllState } from "../models";
+import Header from "../Header";
+import Footer from "../Footer";
 
-const Paper = () => {
+const Content = () => {
   const APP_ID = "M2i3RlZAG_vmYZUa01zHbCPhEg7vEhzmLa_cppmwjhA";
 
   const dispatch = useDispatch();
@@ -63,9 +65,7 @@ const Paper = () => {
 
   return (
     <ContentWrapper>
-      <Heading>
-        <Title>Image Approval Application</Title>
-      </Heading>
+      <Header title="Image Approval Application" />
 
       <ApprovedList fetchImage={fetchImage} />
 
@@ -78,8 +78,12 @@ const Paper = () => {
           )}
         </Thumb>
       </PreviewImage>
+      <Footer
+        thumbnailImage={thumbnailImage}
+        handleLoadedImage={handleLoadedImage}
+      />
     </ContentWrapper>
   );
 };
 
-export default Paper;
+export default Content;
