@@ -4,18 +4,13 @@ import {
   setApprovedImage,
   setRejectedImage,
 } from "../../appRedux/actions/imageSliceAction";
-import {
-  Thumb,
-  ContentWrapper,
-  Heading,
-  PreviewImage,
-  Title,
-} from "../StyledComponents";
+import { ContentWrapper } from "../StyledComponents";
 import ApprovedList from "./ApprovedList";
 import { ImageProp } from "../../models";
 import { AllState } from "../models";
 import Header from "../Header";
 import Footer from "../Footer";
+import Preview from "./Preview";
 
 const Content = () => {
   const APP_ID = "M2i3RlZAG_vmYZUa01zHbCPhEg7vEhzmLa_cppmwjhA";
@@ -69,15 +64,9 @@ const Content = () => {
 
       <ApprovedList fetchImage={fetchImage} />
 
-      <PreviewImage>
-        <Thumb height="300" className={`${!thumbnailImage && "add large"}`}>
-          {thumbnailImage ? (
-            <img src={thumbnailImage.url} alt="Loaded" />
-          ) : (
-            <span>a</span>
-          )}
-        </Thumb>
-      </PreviewImage>
+      <Preview fetchImage={fetchImage} thumbnailImage={thumbnailImage} />
+
+      {/* Footer Coomponent */}
       <Footer
         thumbnailImage={thumbnailImage}
         handleLoadedImage={handleLoadedImage}

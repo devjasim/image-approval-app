@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ImageProp } from "../../models/";
 import { AllState } from "../models";
-import { NavigateIcon, Thumb, ImageList, Title } from "../StyledComponents";
+import { NavigateIcon, ThumbNail, ImageList, Title } from "../StyledComponents";
 import { useSelector } from "react-redux";
 
 const ApprovedImage = (props: any) => {
@@ -54,14 +54,14 @@ const ApprovedImage = (props: any) => {
         )}
         <div className="wrapper">
           {approvedList.length === 0 ? (
-            <Thumb width="70" height="40" className="add">
+            <ThumbNail width="70" height="40" className="placeholder">
               A
-            </Thumb>
+            </ThumbNail>
           ) : (
             approvedList.map((item: ImageProp) => (
-              <Thumb width="70" height="40" key={item.id}>
+              <ThumbNail width="70" height="40" key={item.id}>
                 <img src={item.url} alt="Approved" />
-              </Thumb>
+              </ThumbNail>
             ))
           )}
         </div>

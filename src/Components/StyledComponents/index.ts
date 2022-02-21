@@ -78,7 +78,7 @@ interface ThumbProp {
   height?: string;
 }
 
-export const Thumb = styled.div`
+export const ThumbNail = styled.div`
   min-width: ${(props: ThumbProp) =>
     props?.width ? `${props.width}px` : "100%"};
   height: ${(props: ThumbProp) =>
@@ -104,7 +104,7 @@ export const Thumb = styled.div`
     border-radius: 4px;
     height: 100%;
   }
-  &.add {
+  &.placeholder {
     background: ${color.secondary};
     display: flex;
     align-items: center;
@@ -117,10 +117,10 @@ export const Thumb = styled.div`
       color: ${color.gray};
       cursor: pointer;
     }
-  }
-  &.add.large {
-    svg {
-      font-size: 5rem;
+    &.large {
+      svg {
+        font-size: 5rem;
+      }
     }
   }
 `;

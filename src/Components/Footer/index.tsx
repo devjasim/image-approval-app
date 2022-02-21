@@ -1,6 +1,7 @@
 import React from "react";
 import { ImageProp } from "../../models";
 import { Button, Buttons, ShortDes } from "../StyledComponents";
+import { FaTimes, FaCheck } from "react-icons/fa";
 
 interface Props {
   thumbnailImage?: ImageProp;
@@ -20,7 +21,7 @@ const Footer = (props: Props) => {
             }
             color="secondary"
           >
-            CANCEL
+            <FaTimes />
           </Button>
           <Button
             onClick={() =>
@@ -28,7 +29,7 @@ const Footer = (props: Props) => {
             }
             color="primary"
           >
-            APP
+            <FaCheck />
           </Button>
         </>
       ) : (
