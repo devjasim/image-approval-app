@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchImageSlice,
@@ -14,8 +14,6 @@ import Footer from "../Footer";
 import Preview from "./Preview";
 
 const Content = () => {
-  const APP_ID = "M2i3RlZAG_vmYZUa01zHbCPhEg7vEhzmLa_cppmwjhA";
-
   const dispatch = useDispatch();
 
   // Initially set loaded image in state
@@ -52,9 +50,9 @@ const Content = () => {
    * @description is used for call the unsplash random iamge api
    * @returns return iamge url and id and set to state
    */
-  const fetchImage = () => {
+  const fetchImage = useCallback(() => {
     dispatch(fetchImageSlice());
-  };
+  }, [dispatch]);
 
   /**
    * @name findDuplocation
@@ -62,7 +60,7 @@ const Content = () => {
    * @props Loaded Image and rejected list iamge
    * @returns if find image rejected image it will call again api, else add to thumbnail image
    */
-  const findDuplocation = (loadImage: ImageProp, rejectedList: ImageProp[]) => {
+  const findDuplication = useCallback(() => {
     const findDuplicate =
       rejectedList.length &&
       loadImage &&
@@ -73,12 +71,12 @@ const Content = () => {
     } else {
       fetchImage();
     }
-  };
+  }, [fetchImage, loadImage, rejectedList]);
 
   //Call find Duplicate iamge
   useEffect(() => {
-    loadImage && findDuplocation(loadImage, rejectedList);
-  }, [loadImage, rejectedList]);
+    findDuplication();
+  }, [findDuplication]);
 
   return (
     <ContentWrapper>
