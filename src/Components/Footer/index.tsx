@@ -9,6 +9,12 @@ interface Props {
   handleLoadedImage: (type: string, thumbnailImage: ImageProp) => void;
 }
 
+/**
+ * @name Footer Component
+ * @description Footer compnent of the container
+ * @param props
+ * @returns
+ */
 const Footer = (props: Props) => {
   const { thumbnailImage, handleLoadedImage } = props;
 

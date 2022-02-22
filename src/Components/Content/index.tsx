@@ -20,11 +20,15 @@ const Content = () => {
   const [loadImage, setLoadImage] = useState<any>();
   const [thumbnailImage, setThumbnailImage] = useState<ImageProp>();
 
-  //   Rejected iamge list from redux store
+  //Rejected iamge list from redux store
   const { rejectedList } = useSelector((state: AllState) => state.list);
 
+  // Preview Thumbnail Image state from store
   const { thumbnail } = useSelector((state: AllState) => state.thumb);
 
+  /**
+   * @description when thubnail available from store set it in loadedimage state
+   */
   useEffect(() => {
     thumbnail && setLoadImage(thumbnail);
   }, [thumbnail]);
