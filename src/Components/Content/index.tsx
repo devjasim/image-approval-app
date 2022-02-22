@@ -5,11 +5,9 @@ import {
   setApprovedImage,
   setRejectedImage,
 } from "../../appRedux/actions/imageSliceAction";
-import { ContentWrapper } from "../StyledComponents";
 import ApprovedList from "./ApprovedList";
 import { ImageProp } from "../../models";
 import { AllState } from "../models";
-import Header from "../Header";
 import Footer from "../Footer";
 import Preview from "./Preview";
 
@@ -83,9 +81,7 @@ const Content = () => {
   }, [findDuplication]);
 
   return (
-    <ContentWrapper>
-      <Header title="Image Approval Application" />
-
+    <>
       <ApprovedList fetchImage={fetchImage} />
 
       {/* Preview thumbnail image component  */}
@@ -95,7 +91,7 @@ const Content = () => {
         thumbnailImage={thumbnailImage}
         handleLoadedImage={handleLoadedImage}
       />
-    </ContentWrapper>
+    </>
   );
 };
 
