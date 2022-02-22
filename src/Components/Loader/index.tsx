@@ -13,6 +13,11 @@ const LoadingSpin = styled.div`
   }
 `;
 
+/**
+ * @name Loader Component
+ * @description Loader component when initializing app
+ * @returns Loader Component
+ */
 const Loader = () => {
   return (
     <LoadingSpin>

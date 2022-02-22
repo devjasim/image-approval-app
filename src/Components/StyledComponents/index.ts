@@ -7,6 +7,7 @@ const color = {
   gray: "#E3E8F0",
 };
 
+// App Container
 export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
@@ -16,6 +17,7 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
+// App Container Wrapper
 export const ContentWrapper = styled.div`
   background-color: #fff;
   box-shadow: 0 25px 35px -5px rgba(0, 10, 82, 25%);
@@ -26,6 +28,7 @@ export const ContentWrapper = styled.div`
   margin: 2rem 0;
 `;
 
+// App Common Title
 export const Title = styled.h2`
   font-size: 0.875rem;
   font-weight: 600;
@@ -34,12 +37,14 @@ export const Title = styled.h2`
   margin: 0;
 `;
 
+// App Heading
 export const Heading = styled.div`
   border-bottom: 1px solid ${color.secondary};
   padding: 0 1rem 0.5rem 1rem;
   margin: 0 -1rem 1.5rem;
 `;
 
+// Image Approved List Component
 export const ImageList = styled.div`
   margin: 0.8rem 0 1rem;
   display: flex;
@@ -58,10 +63,12 @@ export const ImageList = styled.div`
   }
 `;
 
+// NavigateIcon Props types
 interface NavProp {
   left?: boolean;
 }
 
+// Navigaation Icon style
 export const NavigateIcon = styled.div`
   margin-left: ${(props: NavProp) => (props.left ? "-0.5rem" : ".2rem")};
   margin-right: ${(props: NavProp) => (props.left ? ".2rem" : "-0.5rem")};
@@ -73,11 +80,13 @@ export const NavigateIcon = styled.div`
   }
 `;
 
+// Thubmbnail Prop
 interface ThumbProp {
   width?: string;
   height?: string;
 }
 
+// Thumbnail Image Style
 export const ThumbNail = styled.div`
   min-width: ${(props: ThumbProp) =>
     props?.width ? `${props.width}px` : "100%"};
@@ -125,6 +134,7 @@ export const ThumbNail = styled.div`
   }
 `;
 
+// Preview Image wrapper
 export const PreviewImage = styled.div`
   margin: 1.5rem 0 1rem 0;
   padding: 1.5rem 0;
@@ -132,6 +142,7 @@ export const PreviewImage = styled.div`
   border-bottom: 1px solid ${color.secondary};
 `;
 
+// Footer Buttons Contaienr
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 1.5rem;
@@ -141,6 +152,7 @@ export const ButtonContainer = styled.div`
   margin-bottom: 4rem;
 `;
 
+// Button Style
 export const Button = styled.button`
   padding: 0.8rem 3rem;
   border-radius: 25px;
@@ -156,6 +168,7 @@ export const Button = styled.button`
     props.color === "primary" ? color.primary : color.black};
 `;
 
+// Footer short description
 export const ShortDes = styled.p`
   font-size: 0.875rem;
   font-wieght: 300;

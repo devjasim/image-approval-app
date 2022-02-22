@@ -6,6 +6,12 @@ interface Prop {
   title: string;
 }
 
+/**
+ * @name Header
+ * @description Header of the app
+ * @param props
+ * @returns Header component
+ */
 const Header = (props: Prop) => {
   return (
     <Heading>
