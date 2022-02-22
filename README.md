@@ -5,12 +5,12 @@
 The challenge was quite exciting because of the following reasons
 
 - Using Unit testing with Jest and React Testing Library for the first time.
-- Using unsplash for the first time for fetch iamges.
+- Using unsplash for the first time for fetching images.
 
 ## Tech Stack
 
-- React
-- Redux using redux toolkit, redux thunk
+- React, TypeScript
+- Redux, redux toolkit, redux thunk
 - Styled Components
 - Jest
 - Unsplash API
