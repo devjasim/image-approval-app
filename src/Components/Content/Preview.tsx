@@ -9,7 +9,12 @@ interface Prop {
   fetchImage: () => void;
 }
 
-// Random Image Preview component
+/**
+ * @name Preview
+ * @description Preview Image component
+ * @param props
+ * @returns Preview comopnent
+ */
 const Preview = (props: Prop) => {
   const { thumbnailImage, fetchImage } = props;
   return (
