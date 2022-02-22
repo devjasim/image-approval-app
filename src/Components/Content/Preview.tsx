@@ -9,12 +9,13 @@ interface Prop {
   fetchImage: () => void;
 }
 
+// Random Image Preview component
 const Preview = (props: Prop) => {
   const { thumbnailImage, fetchImage } = props;
   return (
     <PreviewImage>
       <ThumbNail
-        height="300"
+        height="320"
         className={`${!thumbnailImage && "placeholder large"}`}
       >
         {thumbnailImage ? (
