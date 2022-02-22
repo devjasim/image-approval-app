@@ -75,8 +75,6 @@ Mobile -
 
 ![lighthouse_mobile](https://user-images.githubusercontent.com/52109597/155154331-94830d4e-830b-42d2-a565-88542ea945d2.png)
 
-The per.
-
 ## What can be improved?
 
 - To write all TDD
