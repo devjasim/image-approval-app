@@ -41,7 +41,7 @@ export const Title = styled.h2`
 export const Heading = styled.div`
   border-bottom: 1px solid ${color.secondary};
   padding: 0 1rem 0.5rem 1rem;
-  margin: 0 -1rem 1.5rem;
+  margin: 0 -1.2rem 1.5rem;
 `;
 
 // Image Approved List Component
