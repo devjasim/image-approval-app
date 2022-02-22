@@ -19,7 +19,7 @@ The challenge was quite exciting because of the following reasons
 
 ## Testing
 
-- Although I didn't write much test cases but you can see some of my actions here https://github.com/samrat-ghosh-13/image-approval-application/actions
+- Although I didn't write much test cases but you can see some of my actions here https://github.com/devjasim/image-approval-app/actions
 
 ## Deployment
 
